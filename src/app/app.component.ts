@@ -8,5 +8,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'example';
+  //List of tasks
+  tasks: string[] = [];
+  
+  title = "example";
+
+  //Function to add tasks to List
+  addTask(newTask: string){
+    
+    if (newTask.trim() != ""){
+      this.tasks.push(newTask.trim())
+    }
+  }
 }
