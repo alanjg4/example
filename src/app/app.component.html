@@ -6,7 +6,9 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -43,6 +45,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* The code for our design choices begin here. Note: font choices are purely asthetic. */
 
   main {
     min-height: 100vh;
@@ -57,6 +61,7 @@
   .container{
     display: flex;
     flex-direction: row;
+    font-family: sans-serif;
   }
 
   .left-container{
@@ -66,6 +71,7 @@
     border-right: 2px solid #000;
     border-left: 2px solid #000;
     flex-direction: column;
+    border-bottom: 2px solid #000;
   }
   .middle-container{
     text-align: center;
@@ -74,6 +80,7 @@
     padding: 0px;
     border-right: 2px solid #000;
     border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
   }
 
   .right-container{
@@ -83,6 +90,7 @@
     border-left: 2px solid #000;
     border-right: 2px solid #000;
     border-spacing: 0px;
+    border-bottom: 2px solid #000;
   }
 
   .title-container{
@@ -92,11 +100,21 @@
     border: 2px solid #000;
     border-top: 3px solid #000;
     border-bottom: 3px solid #000;
-    font-family: sans-serif;
     width: 100%;
     padding: 0px;
     background-color: rgba(128, 128, 128, 0.479);
 
+  }
+
+  .tasksContainer{
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    border-bottom: 3px solid #000;
+    width: 100%;
+    padding: 0px;
+    background-color: rgba(238, 45, 158, 0.479);
+    overflow-y: auto;
   }
 </style>
 
@@ -107,12 +125,45 @@
       <div class="title-container">
         <h3> Tasks </h3>
       </div>
+
+      <div class="tasksContainer">
+        he
+      </div>
     </div>
-    <div class="middle-container">
+    
+  <div class="middle-container">
+    
     <div class="title-container">
       <h3> TASK TRACKER </h3>
     </div>
-    </div>
+    
+    <h1 style="font-weight: bold; font-family: sans-serif;"> Welcome to Task Tracker!</h1>
+    <br>
+    <br>
+    
+    <h2>&lt;----- Any tasks that you have are located to the left</h2>
+    <br>
+    <br>
+    
+    <h2>If you want to start a Promodoro session. Click the button to the right -----&gt;</h2>
+    <br>
+    <br>
+    
+    <h2>
+    In order to add a task click the button below
+    <br>|
+    <br>|
+    <br>|
+    <br>v
+    </h2>
+
+    <button (click)="promptUser()"> Button </button>
+    <br>
+    <br>
+    <h5>Tasks completed this session: {{ tasksCompletedNow }}</h5>
+    <h5>Tasks completed since using Task Tracker: {{ tasksCompletedEver }}</h5>
+
+  </div>
 
     <div class="right-container">
       <div class="title-container">
