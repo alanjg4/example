@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -28,9 +30,8 @@ export class AppComponent implements OnInit{
 
   //Function to add tasks to List
   addTask(newTask: string){
-    
     if (newTask.trim() != ""){
-      this.tasks.push(newTask.trim())
+      this.tasks.push(newTask.trim());
     }
     this.saveTasks();
   }
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit{
   promptUser(){
     const input = window.prompt('Please enter your task: \nEx: Hw 2');
     if (input !== null) {
-      this.addTask(input)
+      this.addTask(input);
     }
   }
 
@@ -46,14 +47,14 @@ export class AppComponent implements OnInit{
     this.tasks.splice(i, 1);
     this.tasksCompletedNow += 1;
     this.tasksCompletedEver += 1;
-    this.saveTasks()
-    this.saveCount()
+    this.saveTasks();
+    this.saveCount();
   }
 
   deleteTask(i: number){
     this.tasks.splice(i, 1);
-    this.saveTasks()
-    this.saveCount()
+    this.saveTasks();
+    this.saveCount();
   }
 
   //Function to save tasks locally
