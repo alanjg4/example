@@ -152,16 +152,16 @@
       <div class="tasksContainer">
         <div *ngFor="let task of tasks; let i = index" class="taskMod">
 
-          <div style="width: 25%; box-sizing: border-box; padding: 0; height: 100%; border: 5px solid #000;">
-          <button (click)="completeTask(i)" style="background-color: rgb(34, 211, 34); width: 100%; height: 100%;"> Complete </button>
+          <div style="width: 25%; box-sizing: border-box; padding: 0; height: 100%; border: 1px solid #000; border-top: 0">
+          <button (click)="completeTask(i)" style="background-color: rgb(34, 211, 34); width: 100%; height: 100%; border: 0"> Complete </button>
           </div>
 
-          <div style="width: 50%; box-sizing: border-box; height: 100%; text-align: center; border: 5px solid #000;">
+          <div style="display: flex; flex-direction: column; width: 50%; box-sizing: border-box; height: 100%;justify-content: center; align-items: center; text-align: center; border: 1px solid #000; border-top: 0;">
           {{task}}
           </div>
 
-          <div style="width: 25%; box-sizing: border-box; height: 100%; padding: 0; border: 5px solid #000;">
-          <button (click)="deleteTask(i)" style="background-color: rgb(206, 11, 11); width: 100%; height: 100%;"> Delete </button>
+          <div style="width: 25%; box-sizing: border-box; height: 100%; padding: 0; border: 1px solid #000; border-top: 0">
+          <button (click)="deleteTask(i)" style="background-color: rgb(206, 11, 11); width: 100%; height: 100%; border: 0"> Delete </button>
           </div>
 
         </div>
@@ -194,7 +194,7 @@
     <br>v
     </h2>
 
-    <button (click)="promptUser()"> Button </button>
+    <button (click)="promptUser()" style="width: 25vh; height: 5vh; font-size: 150%; overflow: hidden;"> Create a Task </button>
     <br>
     <br>
     <h5>Tasks completed this session: {{ tasksCompletedNow }}</h5>
