@@ -58,6 +58,7 @@
     font-family: monospace; 
   }
 
+  /*All of the applicaiton is contained within this container*/
   .container{
     display: flex;
     flex-direction: row;
@@ -65,7 +66,7 @@
     word-wrap: break-word;
     word-break: break-word;
   }
-
+  /* The lefthand side container for the tasks */
   .left-container{
     width: 20%;
     min-height: 100vh;
@@ -77,6 +78,8 @@
     word-wrap: break-word;
     word-break: break-word;
   }
+
+  /* The middle container to welcome the user and will have the button to create a task */
   .middle-container{
     text-align: center;
     width: 60%;
@@ -87,6 +90,7 @@
     border-bottom: 2px solid #000;
   }
 
+  /* The righthand side container for the promodoro timer */
   .right-container{
     width: 20%;
     min-height: 100vh;
@@ -97,6 +101,7 @@
     border-bottom: 2px solid #000;
   }
 
+  /* The container to contain the titles */
   .title-container{
     box-sizing: border-box;
     align-items: center;
@@ -112,7 +117,8 @@
     word-break: break-word;
     overflow: hidden;
   }
-
+  
+  /* This container will contain the list of all tasks stacking them vertically */
   .tasksContainer{
     display: flex;
     flex-direction: column;
@@ -124,6 +130,8 @@
     overflow-y: auto;
     height: 92vh;
   }
+
+  /* Each task will be contained in one of these containers */
   .taskMod{
     display: flex;
     flex-direction: row;
@@ -139,6 +147,8 @@
     overflow: hidden;
     padding: 0;
     }
+
+    /* The container used for the complete and delete buttons for the task */
     .completeBox{
       width: 25%; 
       box-sizing: border-box; 
@@ -147,6 +157,8 @@
       border: 1px solid #000; 
       border-top: 0
     }
+
+    /* The container used for the description of the task */
     .desBox{
       display: flex; 
       flex-direction: column; 
@@ -158,6 +170,14 @@
       text-align: center; 
       border: 1px solid #000; 
       border-top: 0;
+    }
+    .timeBox{
+      width: 100%;
+      height: 20%; 
+      box-sizing: border-box; 
+      padding: 0;
+      border: 1px solid #000; 
+      border-top: 0
     }
     
 </style>
@@ -194,18 +214,20 @@
     <div class="title-container">
       <h3> TASK TRACKER </h3>
     </div>
-    
+    <div class="timeBox"> <app-time-display></app-time-display> </div>
+
+
     <h1 style="font-weight: bold; font-family: sans-serif;"> Welcome to Task Tracker!</h1>
     <br>
-    <br>
+    
     
     <h2>&lt;----- Any tasks that you have are located to the left</h2>
     <br>
-    <br>
+    
     
     <h2>If you want to start a Promodoro session. Click the button to the right -----&gt;</h2>
     <br>
-    <br>
+    
     
     <h2>
     In order to add a task click the button below

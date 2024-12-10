@@ -1,22 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { TimeDisplayComponent } from './time-display/time-display.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  standalone: true,
+  imports: [RouterOutlet, CommonModule, TimeDisplayComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit{
-  //List of tasks
+  //List of tasks and tasks completed count
   tasks: string[] = [];
   tasksCompletedNow: number = 0;
   tasksCompletedEver: number = 0;
 
   ngOnInit() {
-    // Gets
+    // Gets tasks stored locally
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
     this.tasks = JSON.parse(savedTasks);
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit{
     this.saveTasks();
   }
 
+  //Prompt user to input their task
   promptUser(){
     const input = window.prompt('Please enter your task: \nEx: Hw 2');
     if (input !== null) {
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit{
     }
   }
 
+  //Function called when user clicks the complete button which updates the number of tasks completed approriately
   completeTask(i: number){
     this.tasks.splice(i, 1);
     this.tasksCompletedNow += 1;
@@ -51,6 +54,7 @@ export class AppComponent implements OnInit{
     this.saveCount();
   }
 
+  //Fucntion called when user wants to delete the spedified task
   deleteTask(i: number){
     this.tasks.splice(i, 1);
     this.saveTasks();
