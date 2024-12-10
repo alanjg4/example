@@ -15,14 +15,11 @@ export class TimeService {
 
     fetchCurrentTime() {
       const url = 'http://worldtimeapi.org/api/timezone/America/Los_Angeles'
-      console.log('here');
       this.http.get<any>(url).subscribe(
         (response) => {
-          console.log('here1');
           this.currentTimeSubject.next(response.datetime);
         },
         (error) => {
-          console.log('here2');
           console.error('Error fetching time:', error);
           this.currentTimeSubject.next('Error fetching time');
         }
