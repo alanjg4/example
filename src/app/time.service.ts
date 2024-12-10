@@ -14,7 +14,7 @@ export class TimeService {
   }
 
     fetchCurrentTime() {
-      const url = 'https://worldtimeapi.org/timezone/Etc/UTC'
+      const url = 'http://worldtimeapi.org/api/timezone/America/Los_Angeles'
       console.log('here');
       this.http.get<any>(url).subscribe(
         (response) => {

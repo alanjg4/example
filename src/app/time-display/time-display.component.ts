@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeService } from '../time.service';
-import { NgOptimizedImage } from '@angular/common';
-/*import { Subscription, interval } from 'rxjs';
-import { switchMap } from 'rxjs/operators';*/
 
 @Component({
   selector: 'app-time-display',
