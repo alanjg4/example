@@ -1,16 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TimeService {
-  constructor (private http: HttpClient){}
+  private currentTimeSubject = new BehaviorSubject<string>('Loading.');
+  currentTime$ = this.currentTimeSubject.asObservable();
 
-    getTime(): Observable<any> {
-      const url = 'https://worldtimeapi.org/timezone/Etc/UTC';
-      return this.http.get<JSON>(url);
+  constructor (private http: HttpClient){
+    this.fetchCurrentTime();
+  }
+
+    fetchCurrentTime() {
+      const url = 'https://worldtimeapi.org/timezone/Etc/UTC'
+      console.log('here');
+      this.http.get<any>(url).subscribe(
+        (response) => {
+          console.log('here1');
+          this.currentTimeSubject.next(response.datetime);
+        },
+        (error) => {
+          console.log('here2');
+          console.error('Error fetching time:', error);
+          this.currentTimeSubject.next('Error fetching time');
+        }
+      );
     }
 }
    
