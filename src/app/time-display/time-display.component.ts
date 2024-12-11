@@ -11,9 +11,9 @@ export class TimeDisplayComponent implements OnInit{
   currentTime: string = 'Loading'
 
   constructor(private timeService: TimeService){}
-    ngOnInit(): void{
-      this.timeService.currentTime$.subscribe(time => {
-        this.currentTime = time
+    ngOnInit(){
+      this.timeService.currentTime$.subscribe((time) => {
+        this.currentTime = time;
       });
     }
   }
