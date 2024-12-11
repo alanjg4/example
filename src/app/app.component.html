@@ -8,9 +8,14 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <style>
   :host {
+
+    font-family: "Poppins", "Tomorrow", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
     --french-violet: oklch(47.66% 0.246 305.88);
@@ -38,9 +43,6 @@
 
     --pill-accent: var(--bright-blue);
 
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -54,8 +56,8 @@
     padding: 0px;
   }
 
-  h1 {
-    font-family: monospace; 
+  *{
+    font-family: "Poppins", sans-serif;
   }
 
   /*All of the applicaiton is contained within this container*/
@@ -101,7 +103,7 @@
   /* The righthand side container for the promodoro timer */
   .right-container{
     width: 20%;
-    height: 25vh;
+    height: 50vh;
     padding: 0px;
     border-left: 2px solid #000;
     border-right: 2px solid #000;
@@ -111,6 +113,7 @@
     border-radius: 15px; 
     overflow: hidden; 
   }
+  
 
   /* The container to contain the titles */
   .title-container{
@@ -227,6 +230,7 @@
       width: 100%; 
       box-sizing: border-box; 
       overflow: hidden; 
+      font-size: 20px;
     }
 
     .create-task{
@@ -278,7 +282,7 @@
   <div class="middle-container">
     
     <div class="title-container">
-      <h3> ZotTask </h3>
+      <h3> Dashboard </h3>
     </div>
     <div class="timeBox"> <app-time-display></app-time-display> </div>
 
@@ -318,9 +322,11 @@
       <div class="pomo-container">
         <div id="pomo" class="pomo-display">25:00</div>
         <div class="pomo-button-wrapper">
-          <button class="pomo-button start-button" (click)="startTimer()" [disabled]="timerRunning">Start</button>
-        <button class="pomo-button stop-button" (click)="stopTimer()" [disabled]="!timerRunning">Stop</button>
-        <button class="pomo-button reset-button" (click)="resetTimer()">Reset</button>
+          <button class="pomo-button start-button" (click)="startTimer()" [disabled]="timerRunning">
+            <i class='bx bx-play'></i>
+          </button>
+        <button class="pomo-button stop-button" (click)="stopTimer()" [disabled]="!timerRunning"><i class='bx bx-stop-circle' ></i></button>
+        <button class="pomo-button reset-button" (click)="resetTimer()"><i class='bx bx-reset' ></i></button>
         </div>
       </div>
     </div>
