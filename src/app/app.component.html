@@ -50,7 +50,7 @@
 
   main {
     min-height: 100vh;
-    background-color: #faf6f6;
+    background-color: #f9f9f9;
     padding: 0px;
   }
 
@@ -65,11 +65,12 @@
     font-family: sans-serif;
     word-wrap: break-word;
     word-break: break-word;
+    gap: 3em; 
   }
+  
   /* The lefthand side container for the tasks */
   .left-container{
-    width: 20%;
-    min-height: 100vh;
+    width: 15%;
     padding: 0px;
     border-right: 2px solid #000;
     border-left: 2px solid #000;
@@ -77,28 +78,38 @@
     border-bottom: 2px solid #000;
     word-wrap: break-word;
     word-break: break-word;
+    border-radius: 15px; 
+    overflow: hidden; 
+    margin: 0.5em;
+    height: 95vh;
   }
 
   /* The middle container to welcome the user and will have the button to create a task */
   .middle-container{
     text-align: center;
     width: 60%;
-    min-height: 100vh;
+    height: 95vh;
     padding: 0px;
     border-right: 2px solid #000;
     border-left: 2px solid #000;
     border-bottom: 2px solid #000;
+    margin: 0.5em;
+    border-radius: 15px; 
+    position: relative;
   }
 
   /* The righthand side container for the promodoro timer */
   .right-container{
     width: 20%;
-    min-height: 100vh;
+    height: 25vh;
     padding: 0px;
     border-left: 2px solid #000;
     border-right: 2px solid #000;
     border-spacing: 0px;
     border-bottom: 2px solid #000;
+    margin: 0.5em;
+    border-radius: 15px; 
+    overflow: hidden; 
   }
 
   /* The container to contain the titles */
@@ -107,15 +118,15 @@
     align-items: center;
     text-align: center;
     border: 2px solid #000;
-    border-top: 3px solid #000;
-    border-bottom: 3px solid #000;
     width: 100%;
     padding: 0px;
-    background-color: rgba(34, 10, 97, 0.479);
+    background-color: #d1c4e9; /* Light blue */
+    color: black;
     height: 8vh;
     word-wrap: break-word;
     word-break: break-word;
     overflow: hidden;
+    border-radius: 10px 10px 0 0 ;
   }
   
   /* This container will contain the list of all tasks stacking them vertically */
@@ -179,6 +190,61 @@
       border: 0;
       border-bottom: 2px solid #000; 
     }
+
+    .checkmark-box{
+      background-color:#28a745; 
+      width: 100%; 
+      height: 100%; 
+      border: 0;
+      cursor: pointer;
+    }
+
+    .checkmark-box:hover{
+      background-color:#39d354; 
+    }
+
+    .x-box{
+      background-color:  #dc3545; 
+      width: 100%; 
+      height: 100%; 
+      border: 0;
+      cursor: pointer;
+    }
+
+    .x-box:hover{
+      background-color:  #e55365; 
+    }
+
+    .text-task{
+      margin-top: 15%;
+    }
+
+    .progress{
+      text-align: center; 
+      position: absolute; 
+      bottom: 0;
+      left: 0;
+      width: 100%; 
+      box-sizing: border-box; 
+      overflow: hidden; 
+    }
+
+    .create-task{
+      width: 25vh;
+      height: 5vh;
+      font-size: 150%;
+      overflow: hidden;
+      background-color: #28a745; 
+      color: white; 
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5%;
+    }
+
+    .create-task:hover{
+      transform: scale(1.05);
+    }
     
 </style>
 
@@ -187,14 +253,14 @@
     
     <div class="left-container">
       <div class="title-container">
-        <h3> Tasks </h3>
+        <h3> Task Tracker </h3>
       </div>
 
       <div class="tasksContainer">
         <div *ngFor="let task of tasks; let i = index" class="taskMod">
 
           <div class="completeBox">
-          <button (click)="completeTask(i)" style="background-color: rgb(34, 211, 34); width: 100%; height: 100%; border: 0"> Complete </button>
+          <button (click)="completeTask(i)" class="checkmark-box"> &#x2713; </button>
           </div>
 
           <div class="desBox">
@@ -202,7 +268,7 @@
           </div>
 
           <div class="completeBox">
-          <button (click)="deleteTask(i)" style="background-color: rgb(206, 11, 11); width: 100%; height: 100%; border: 0"> Delete </button>
+          <button (click)="deleteTask(i)" class="x-box"> X </button>
           </div>
 
         </div>
@@ -212,42 +278,50 @@
   <div class="middle-container">
     
     <div class="title-container">
-      <h3> TASK TRACKER </h3>
+      <h3> ZotTask </h3>
     </div>
     <div class="timeBox"> <app-time-display></app-time-display> </div>
 
-
-    <h1 style="font-weight: bold; font-family: sans-serif;"> Welcome to Task Tracker!</h1>
+    <h1 style="font-weight: bold; font-family: sans-serif;"> Welcome to ZotTask!</h1>
     <br>
     
     
-    <h2>&lt;----- Any tasks that you have are located to the left</h2>
+    <!-- <h2>&lt;----- Any tasks that you have are located to the left</h2>
     <br>
     
     
-    <h2>If you want to start a Promodoro session. Click the button to the right -----&gt;</h2>
-    <br>
+    <h2>If you want to start a Pomodoro session. Click the button to the right -----&gt;</h2>
+    <br> -->
     
     
-    <h2>
-    In order to add a task click the button below
+    <h2 class="text-task">
+      Click the button below to add a task.
+    <!-- <br>|
     <br>|
     <br>|
-    <br>|
-    <br>v
+    <br>v -->
     </h2>
 
-    <button (click)="promptUser()" style="width: 25vh; height: 5vh; font-size: 150%; overflow: hidden;"> Create a Task </button>
+    <button (click)="promptUser()" class="create-task"> Create a Task </button>
     <br>
     <br>
-    <h5>Tasks completed this session: {{ tasksCompletedNow }}</h5>
-    <h5>Tasks completed since using Task Tracker: {{ tasksCompletedEver }}</h5>
-
+    <div class="progress">
+      <h5>Tasks completed this session: {{ tasksCompletedNow }}</h5>
+      <h5>Tasks completed since using ZotTask: {{ tasksCompletedEver }}</h5>
+    </div>
   </div>
 
     <div class="right-container">
       <div class="title-container">
-        <h3> Promodoro Timer </h3>
+        <h3> Pomodoro Timer </h3>
+      </div>
+      <div class="pomo-container">
+        <div id="pomo" class="pomo-display">25:00</div>
+        <div class="pomo-button-wrapper">
+          <button class="pomo-button start-button" (click)="startTimer()" [disabled]="timerRunning">Start</button>
+        <button class="pomo-button stop-button" (click)="stopTimer()" [disabled]="!timerRunning">Stop</button>
+        <button class="pomo-button reset-button" (click)="resetTimer()">Reset</button>
+        </div>
       </div>
     </div>
   </div>

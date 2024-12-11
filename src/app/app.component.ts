@@ -16,6 +16,10 @@ export class AppComponent implements OnInit{
   tasksCompletedNow: number = 0;
   tasksCompletedEver: number = 0;
 
+  timeLeft: number = 1500; 
+  interval: any;
+  timerRunning: boolean = false;
+
   ngOnInit() {
     // Gets tasks stored locally
     const savedTasks = localStorage.getItem('tasks');
@@ -67,5 +71,44 @@ export class AppComponent implements OnInit{
   }
   private saveCount(){
     localStorage.setItem('tasksComp', JSON.stringify(this.tasksCompletedEver));
+  }
+
+  startTimer() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    this.timerRunning = true;
+    this.interval = setInterval(() => {
+      this.timeLeft--;
+      this.updateTimerDisplay();
+      if (this.timeLeft === 0) {
+        clearInterval(this.interval);
+        alert("Time's up!");
+        this.resetTimer();
+      }
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.interval);
+    this.timerRunning = false;
+  }
+
+  resetTimer() {
+    clearInterval(this.interval);
+    this.timeLeft = 1500;
+    this.updateTimerDisplay();
+    this.timerRunning = false;
+  }
+
+  updateTimerDisplay() {
+    const minutes = Math.floor(this.timeLeft / 60);
+    const seconds = this.timeLeft % 60;
+    const timerElement = document.getElementById('pomo');
+    if (timerElement) {
+      timerElement.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds
+        .toString()
+        .padStart(2, '0')}`;
+    }
   }
 }

@@ -1,0 +1,53 @@
+.pomo-button-wrapper {
+    display: flex; 
+    justify-content: center; 
+    gap: 0.5em; 
+  }
+  
+  .pomo-button {
+    font-size: 1em; 
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 0.5em 1em; 
+    border-radius: 0.25em; 
+    color: white;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+  }
+  
+  .timer-button:hover {
+    transform: translateY(-3px); 
+  }
+  
+  /* Start Button */
+  .start-button {
+    background-color: #28a745;
+  }
+
+  .start-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Stop Button */
+  .stop-button {
+    background-color:  #dc3545;
+  }
+
+  .stop-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Reset Button */
+  .reset-button {
+    background-color: #007bff;
+  }
+
+  .reset-button:hover {
+    transform: scale(1.05);
+  }
+
+  .pomo-display{
+    color: black;
+    font-weight: 800;
+    font-size: 50px;
+  }
