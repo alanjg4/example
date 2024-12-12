@@ -9,7 +9,7 @@ import { TimeService } from '../time.service';
 })
 export class TimeDisplayComponent implements OnInit{
   currentTime: string = 'Loading'
-
+  /* Current time is initially 'Loading' and ngOnInit fecthes the time as compomponent is initialized.*/
   constructor(private timeService: TimeService){}
     ngOnInit(){
       this.timeService.currentTime$.subscribe((time) => {

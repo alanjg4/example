@@ -13,7 +13,7 @@ export class TimeService {
   constructor (private http: HttpClient){
     this.getCurrentTime();
   }
-
+  // Get current time from worldtimeapi.org and use data to start clock
   private getCurrentTime() {
     const url = 'https://worldtimeapi.org/api/timezone/America/Los_Angeles'
     this.http.get<any>(url).subscribe(
@@ -27,7 +27,7 @@ export class TimeService {
       }
     );
   }
-
+  // Start the clock and update using intervals
   private startClock(){
     setInterval(() => {
       if (this.currentDateAndTime) {

@@ -58,7 +58,7 @@ export class AppComponent implements OnInit{
     this.saveCount();
   }
 
-  //Fucntion called when user wants to delete the spedified task
+  //Function called when user wants to delete the spedified task
   deleteTask(i: number){
     this.tasks.splice(i, 1);
     this.saveTasks();
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit{
   private saveCount(){
     localStorage.setItem('tasksComp', JSON.stringify(this.tasksCompletedEver));
   }
-
+//Function to start the timer until countdown finished, then alert user timer is finished and reset the timer
   startTimer() {
     if (this.interval) {
       clearInterval(this.interval);
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit{
       }
     }, 1000);
   }
-
+//Stop the timer at its current time
   stopTimer() {
     clearInterval(this.interval);
     this.timerRunning = false;
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit{
     this.updateTimerDisplay();
     this.timerRunning = false;
   }
-
+//Update the current time that is displayed
   updateTimerDisplay() {
     const minutes = Math.floor(this.timeLeft / 60);
     const seconds = this.timeLeft % 60;
